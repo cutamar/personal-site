@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+  web:
+    build:
+      context: .
+    container_name: personal_site
+    restart: always
+    networks:
+     - nginx_default
+    environment:
+     - VIRTUAL_HOST=cutura.me,www.cutura.me
+     - VIRTUAL_NETWORK=nginx-proxy
+     - VIRTUAL_PORT=80
+     - LETSENCRYPT_HOST=cutura.me,www.cutura.me
+     - LETSENCRYPT_EMAIL=amar.cutura@gmail.com
+
+networks:
+  nginx_default:
+    external: true
+
